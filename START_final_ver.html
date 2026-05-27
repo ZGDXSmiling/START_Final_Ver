@@ -1,0 +1,2404 @@
+START (Final Ver.)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>START_XII Study Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+        /* ============================================================
+       CLASSY & ELEGANT CSS – SUBTLE, PROFESSIONAL, NO VIBRANT NEONS
+    ============================================================ */
+    :root {
+
+  --bg-primary: linear-gradient(135deg, #020202, #050505, #0b000f, #020202);
+
+  --bg-secondary: rgba(10, 10, 10, 0.82);
+
+  --bg-tertiary: rgba(18, 18, 18, 0.75);
+
+  --surface: rgba(12,12,12,0.72);
+
+  --text-primary: #f8fafc;
+
+  --text-secondary: #dbe4ee;
+
+  --muted: #8b95a7;
+
+  --accent: #ff004c;
+
+  --accent-light: #ff4d7d;
+
+  --border-color: rgba(255,255,255,0.08);
+
+  --shadow-color: rgba(0,0,0,0.65);
+
+  --glass-blur: 18px;
+
+  --max-width: 1280px;
+
+  --border-radius: 20px;
+
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.55;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 24px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       UTILITY & BASE STYLES
+    ============================================================ */
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; }
+    .flex { display: flex; }
+    .flex-center { display: flex; align-items: center; justify-content: center; }
+    .grid { display: grid; }
+    .text-center { text-align: center; }
+    .muted { color: var(--muted); }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 25% 75%, rgba(110,158,212,0.07) 0%, transparent 50%),
+        radial-gradient(circle at 75% 25%, rgba(197,217,240,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -2;
+      opacity: 0.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+
+    /* ============================================================
+       HEADER – MINIMAL & ELEGANT
+    ============================================================ */
+    .header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 20px 28px;
+      border-radius: var(--border-radius);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 32px var(--shadow-color);
+      backdrop-filter: blur(var(--glass-blur));
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo__icon {
+      font-size: 1.6rem;
+      padding: 10px;
+      border-radius: 12px;
+      background: rgba(110, 158, 212, 0.12);
+      color: var(--accent);
+      box-shadow: 0 4px 12px rgba(110, 158, 212, 0.15);
+    }
+
+    .logo__text {
+      font-family: "Playfair Display", serif;
+      font-size: 1.35rem;
+      letter-spacing: 1px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    /* ELEGANT CIRCULAR DROPDOWN – SUBTLE & REFINED */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown__trigger {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-weight: 600;
+      background: transparent;
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    .dropdown__trigger:hover,
+    .dropdown__trigger:focus {
+      color: var(--text-primary);
+      border-color: var(--border-color);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--shadow-color);
+    }
+
+    .circular-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 2px solid rgba(110, 158, 212, 0.4);
+      box-shadow: 0 10px 40px var(--shadow-color),
+                  inset 0 0 20px rgba(110, 158, 212, 0.1);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      padding: 12px;
+    }
+
+    .dropdown.active .circular-menu {
+      display: flex;
+      animation: fadeInScale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: translateX(-50%) translateY(12px) scale(0.85); }
+      100% { opacity: 1; transform: translateX(-50%) translateY(12px) scale(1); }
+    }
+
+    .menu-item {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      background: rgba(30, 41, 59, 0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--border-color);
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.12);
+      background: rgba(110, 158, 212, 0.25);
+      border-color: var(--accent);
+      box-shadow: 0 0 16px rgba(110, 158, 212, 0.3);
+    }
+
+    .menu-item i {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+    }
+
+    /* Refined 6-button positioning */
+    .menu-item:nth-child(1) { transform: rotate(0deg) translate(82px) rotate(0deg); }
+    .menu-item:nth-child(2) { transform: rotate(60deg) translate(82px) rotate(-60deg); }
+    .menu-item:nth-child(3) { transform: rotate(120deg) translate(82px) rotate(-120deg); }
+    .menu-item:nth-child(4) { transform: rotate(180deg) translate(82px) rotate(-180deg); }
+    .menu-item:nth-child(5) { transform: rotate(240deg) translate(82px) rotate(-240deg); }
+    .menu-item:nth-child(6) { transform: rotate(300deg) translate(82px) rotate(-300deg); }
+
+    .menu-label {
+      position: absolute;
+      color: var(--text-primary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(15, 23, 42, 0.95);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px var(--shadow-color);
+    }
+
+    .menu-item:hover .menu-label { opacity: 1; }
+
+    .menu-item:nth-child(1) .menu-label { transform: translateY(-38px); }
+    .menu-item:nth-child(2) .menu-label { transform: translate(32px, -24px); }
+    .menu-item:nth-child(3) .menu-label { transform: translate(32px, 24px); }
+    .menu-item:nth-child(4) .menu-label { transform: translateY(38px); }
+    .menu-item:nth-child(5) .menu-label { transform: translate(-32px, 24px); }
+    .menu-item:nth-child(6) .menu-label { transform: translate(-32px, -24px); }
+
+    .close-menu {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(148, 163, 184, 0.15);
+      color: var(--text-primary);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .close-menu:hover {
+      background: rgba(148, 163, 184, 0.3);
+      transform: scale(1.1);
+    }
+
+    /* Regular dropdown for Materials */
+    .dropdown__menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      padding: 10px 8px;
+      box-shadow: 0 12px 32px var(--shadow-color);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      backdrop-filter: blur(var(--glass-blur));
+    }
+
+    .dropdown:hover .dropdown__menu,
+    .dropdown__menu:hover {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown__item {
+      color: var(--text-secondary);
+      padding: 12px 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .dropdown__item:hover {
+      background: rgba(110, 158, 212, 0.12);
+      color: var(--text-primary);
+      transform: translateX(6px);
+    }
+
+    /* ============================================================
+       MAIN CONTENT
+    ============================================================ */
+    .main {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding: 24px 0;
+    }
+
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      background: var(--surface);
+      padding: 14px 20px;
+    }
+
+    .marquee {
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: 2.85rem;
+      font-weight: 900;
+      text-align: center;
+      margin-top: 12px;
+      letter-spacing: -1.5px;
+      color: var(--text-primary);
+      text-shadow: 0 4px 20px rgba(110, 158, 212, 0.12);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 620px;
+      margin: 12px auto 0;
+    }
+
+    .main-split {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 32px;
+      width: 100%;
+    }
+
+    .left-col, .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Cards – Elegant glass cards */
+    .card {
+      background: var(--surface);
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border-color);
+      padding: 24px;
+      box-shadow: 0 12px 40px var(--shadow-color);
+      backdrop-filter: blur(var(--glass-blur));
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px var(--shadow-color);
+    }
+
+    .card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card__title {
+      font-size: 1.25rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-family: "Playfair Display", serif;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    /* Enhanced subtle buttons */
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 22px;
+      min-width: 148px;
+      background: rgba(110, 158, 212, 0.1);
+      color: var(--text-primary);
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow: 0 6px 20px var(--shadow-color);
+      transition: var(--transition);
+      font-weight: 600;
+      font-size: 0.98rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn__icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: rgba(110, 158, 212, 0.15);
+      color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px var(--shadow-color);
+      border-color: var(--accent-light);
+      background: rgba(110, 158, 212, 0.15);
+    }
+
+    .btn:hover .btn__icon {
+      transform: scale(1.08);
+      color: var(--text-primary);
+    }
+    
+
+    /* Gaming Corner – Special attractive styling */
+    .gaming-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .gaming-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 40%;
+      height: 300%;
+      background: linear-gradient(135deg, transparent, rgba(110,158,212,0.15), transparent);
+      transform: rotate(25deg);
+      animation: gaming-shimmer 8s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.25;
+    }
+    @keyframes gaming-shimmer {
+      0% { transform: translateX(-150%) rotate(25deg); }
+      100% { transform: translateX(300%) rotate(25deg); }
+    }
+
+    /* Pomodoro Timer */
+    .pomodoro {
+      text-align: center;
+    }
+
+    .timer-display {
+      font-size: 3.2rem;
+      font-weight: 700;
+      font-family: "Playfair Display", serif;
+      letter-spacing: -2px;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .progress-ring {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 20px;
+    }
+
+    .timer-controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .timer-btn {
+      padding: 12px 24px;
+      border-radius: 9999px;
+      background: rgba(110, 158, 212, 0.15);
+      color: var(--text-primary);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .timer-btn:hover { background: var(--accent); color: #fff; }
+
+    /* To-Do List */
+    .todo-input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      background: rgba(255,255,255,0.05);
+      color: var(--text-primary);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .todo-list {
+      list-style: none;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      transition: var(--transition);
+    }
+
+    .todo-item.done {
+      opacity: 0.65;
+      text-decoration: line-through;
+    }
+
+    /* Quick Poll */
+    .poll-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .poll-option:hover {
+      background: rgba(110, 158, 212, 0.15);
+    }
+
+    .poll-result {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .poll-bar {
+      flex: 1;
+      height: 10px;
+      background: rgba(148, 163, 184, 0.2);
+      border-radius: 9999px;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .main-split { grid-template-columns: 1fr; }
+      .circular-menu { width: 260px; height: 260px; }
+      .menu-item { width: 56px; height: 56px; }
+      .menu-item:nth-child(1) { transform: rotate(0deg) translate(102px) rotate(0deg); }
+    }
+
+    @media (max-width: 540px) {
+      .hero-title { font-size: 2.25rem; }
+      .timer-display { font-size: 2.6rem; }
+    }
+
+    /* Accessibility */
+    .focus-visible {
+      outline: 3px solid rgba(110, 158, 212, 0.3);
+      outline-offset: 4px;
+      border-radius: 12px;
+    }
+    /* ============================================================
+   🎮 GAMING BUTTON COLOR CODING (NEW ADDITION ONLY)
+============================================================ */
+/* SLOWROADS - WHITE */
+.btn.slowroads {
+    background: rgba(255, 255, 255, 0.08); /* light grey/white background */
+    border-color: rgba(255, 255, 255, 0.7); /* white border */
+}
+
+.btn.slowroads:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+}
+/* SMASH KARTS - ORANGE */
+.btn.smash_karts {
+    background: rgba(255, 165, 0, 0.12);   /* light orange background */
+    border-color: rgba(255, 165, 0, 0.8); /* bright orange border */
+}
+
+.btn.smash_karts:hover {
+    background: rgba(255, 165, 0, 0.22);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.45);
+}
+/* DEADSHOT - RED */
+.btn.deadshot {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.btn.deadshot:hover {
+  background: rgba(239, 68, 68, 0.28);
+  border-color: rgba(239, 68, 68, 0.9);
+  color: #fff;
+
+  box-shadow:
+    0 0 18px rgba(239, 68, 68, 0.45);
+
+  transform: translateY(-2px);
+}
+
+
+/* BGMI - YELLOW */
+.btn.bgmi {
+  background: rgba(250, 204, 21, 0.18);
+  border-color: rgba(250, 204, 21, 0.5);
+}
+
+.btn.bgmi:hover {
+  background: rgba(250, 204, 21, 0.28);
+  border-color: rgba(250, 204, 21, 0.9);
+  color: #000;
+
+  box-shadow:
+    0 0 18px rgba(250, 204, 21, 0.45);
+
+  transform: translateY(-2px);
+}
+
+
+/* MINECRAFT - GREEN */
+.btn.minecraft {
+  background: rgba(34, 197, 94, 0.18);
+  border-color: rgba(34, 197, 94, 0.5);
+}
+
+.btn.minecraft:hover {
+  background: rgba(34, 197, 94, 0.28);
+  border-color: rgba(34, 197, 94, 0.9);
+  color: #fff;
+
+  box-shadow:
+    0 0 18px rgba(34, 197, 94, 0.45);
+
+  transform: translateY(-2px);
+}
+
+
+/* ROBLOX - LIGHT BLUE */
+.btn.roblox {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.btn.roblox:hover {
+  background: rgba(56, 189, 248, 0.28);
+  border-color: rgba(56, 189, 248, 0.9);
+  color: #fff;
+
+  box-shadow:
+    0 0 18px rgba(56, 189, 248, 0.45);
+
+  transform: translateY(-2px);
+}
+.btn.deadshot:hover,
+.btn.minecraft:hover,
+.btn.roblox:hover,
+.btn.slowroads:hover,
+.btn.smash_karts:hover {
+    color: #000;
+}
+
+/* =========================
+   OPERA GX GAMING CARD
+========================= */
+
+.gx-card{
+    position: relative;
+
+    width: 320px;
+    padding: 24px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,15,15,0.96),
+            rgba(35,0,10,0.95)
+        );
+
+    border: 1px solid rgba(255, 0, 80, 0.35);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 30px rgba(255,0,80,0.12),
+        inset 0 0 25px rgba(255,0,60,0.05);
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s ease;
+}
+
+.gx-card:hover{
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 35px rgba(255,0,80,0.25);
+}
+
+/* Glow */
+.gx-glow{
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    background: rgba(255,0,80,0.18);
+
+    border-radius: 50%;
+
+    top: -70px;
+    right: -70px;
+
+    filter: blur(60px);
+}
+
+/* Header */
+.gx-header{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* Icon */
+.gx-icon{
+    width: 64px;
+    height: 64px;
+
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,0,80,0.25),
+            rgba(255,0,0,0.15)
+        );
+
+    border: 1px solid rgba(255,0,80,0.35);
+
+    box-shadow:
+        0 0 20px rgba(255,0,80,0.2);
+}
+
+/* Text */
+.gx-text h2{
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.gx-text p{
+    margin-top: 4px;
+
+    color: #ff4d7a;
+
+    font-size: 14px;
+}
+
+/* Divider */
+.gx-line{
+    width: 100%;
+    height: 1px;
+
+    margin: 20px 0;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(255,0,80,0.4),
+            transparent
+        );
+}
+
+/* Description */
+.gx-description{
+    color: rgba(255,255,255,0.72);
+
+    line-height: 1.6;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* Button */
+.gx-button{
+    display: inline-block;
+
+    margin-top: 24px;
+
+    padding: 14px 22px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff0055,
+            #7a001f
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.25s ease;
+
+    box-shadow:
+        0 0 18px rgba(255,0,80,0.3);
+
+    position: relative;
+    z-index: 2;
+}
+
+.gx-button:hover{
+    transform: scale(1.04);
+    box-shadow:
+        0 0 28px rgba(255,0,80,0.5);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff2b6d,
+            #a0002f
+        );
+}
+/* ============================================================
+   🌞 LIGHT THEME OVERRIDES
+   PASTE THIS AT THE VERY BOTTOM OF YOUR CURRENT CSS
+   (DO NOT REMOVE YOUR ORIGINAL CSS)
+============================================================ */
+
+/* ============================================================
+   MAIN LIGHT THEME VARIABLES
+============================================================ */
+
+body.light-theme {
+
+  --bg-primary:
+    linear-gradient(
+      135deg,
+      #f8fafc,
+      #eef2f7,
+      #ffffff
+    );
+
+  --bg-secondary:
+    rgba(255,255,255,0.88);
+
+  --bg-tertiary:
+    rgba(245,247,250,0.85);
+
+  --surface:
+    rgba(255,255,255,0.72);
+
+  --text-primary:
+    #111827;
+
+  --text-secondary:
+    #374151;
+
+  --muted:
+    #6b7280;
+
+  --border-color:
+    rgba(15,23,42,0.08);
+
+  --shadow-color:
+    rgba(15,23,42,0.10);
+
+  --accent: #2563eb;
+
+  --accent-light: #60a5fa;
+}
+
+/* ============================================================
+   BODY
+============================================================ */
+
+body.light-theme {
+
+  background: var(--bg-primary);
+
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   BACKGROUND GLOW
+============================================================ */
+
+body.light-theme::before {
+
+  background:
+
+    radial-gradient(
+      circle at 25% 75%,
+      rgba(110,158,212,0.12) 0%,
+      transparent 50%
+    ),
+
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(197,217,240,0.12) 0%,
+      transparent 50%
+    );
+
+  opacity: 1;
+}
+
+/* ============================================================
+   HEADER + PANELS + CARDS
+============================================================ */
+
+body.light-theme .header,
+
+body.light-theme .card,
+
+body.light-theme .dropdown__menu,
+
+body.light-theme .circular-menu,
+
+body.light-theme .marquee-container {
+
+  background:
+    rgba(255,255,255,0.78);
+
+  border:
+    1px solid rgba(15,23,42,0.08);
+
+  box-shadow:
+    0 10px 35px rgba(15,23,42,0.08);
+
+  backdrop-filter:
+    blur(20px);
+}
+
+/* ============================================================
+   TEXT COLORS
+============================================================ */
+
+body.light-theme .hero-title,
+
+body.light-theme .logo__text,
+
+body.light-theme .card__title,
+
+body.light-theme .section-title,
+
+body.light-theme .timer-display {
+
+  color: var(--text-primary);
+}
+
+body.light-theme .subtitle,
+
+body.light-theme .marquee,
+
+body.light-theme .dropdown__trigger,
+
+body.light-theme .dropdown__item,
+
+body.light-theme .muted {
+
+  color: var(--muted);
+}
+
+/* ============================================================
+   MENU ITEMS
+============================================================ */
+
+body.light-theme .menu-item {
+
+  background:
+    rgba(255,255,255,0.95);
+
+  border:
+    1px solid rgba(15,23,42,0.08);
+}
+
+body.light-theme .menu-item i {
+
+  color:
+    #111827;
+}
+
+body.light-theme .menu-label {
+
+  background:
+    rgba(255,255,255,0.95);
+
+  color:
+    #111827;
+
+  border:
+    1px solid rgba(15,23,42,0.08);
+}
+
+/* ============================================================
+   TODO / POLL / INPUTS
+============================================================ */
+
+body.light-theme .todo-input,
+
+body.light-theme .todo-item,
+
+body.light-theme .poll-option {
+
+  background:
+    rgba(255,255,255,0.72);
+
+  border:
+    1px solid rgba(15,23,42,0.06);
+
+  color:
+    #111827;
+}
+
+/* ============================================================
+   INPUT PLACEHOLDER
+============================================================ */
+
+body.light-theme .todo-input::placeholder {
+
+  color:
+    #6b7280;
+}
+
+/* ============================================================
+   TIMER BUTTON
+============================================================ */
+
+body.light-theme .timer-btn {
+
+  background:
+    rgba(110,158,212,0.12);
+
+  color:
+    #111827;
+}
+
+/* ============================================================
+   DROPDOWN HOVER
+============================================================ */
+
+body.light-theme .dropdown__trigger:hover,
+
+body.light-theme .dropdown__item:hover {
+
+  background:
+    rgba(110,158,212,0.10);
+
+  color:
+    #111827;
+}
+
+/* ============================================================
+   CARD HOVER
+============================================================ */
+
+body.light-theme .card:hover {
+
+  box-shadow:
+    0 20px 45px rgba(15,23,42,0.12);
+}
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+body.light-theme ::-webkit-scrollbar-track {
+
+  background:
+    #eef2f7;
+}
+
+body.light-theme ::-webkit-scrollbar-thumb {
+
+  background:
+    linear-gradient(
+      #cbd5e1,
+      #94a3b8
+    );
+}
+
+/* ============================================================
+   IMPORTANT:
+   GX CARD + GAME BUTTON COLORS REMAIN UNCHANGED
+============================================================ */
+/* ============================================================
+   FORCE LIGHT THEME COLORS
+============================================================ */
+
+body.light-theme {
+  background:
+    linear-gradient(
+      135deg,
+      #f8fafc,
+      #eef2f7,
+      #ffffff
+    ) !important;
+
+  color: #111827 !important;
+}
+
+/* Main panels */
+
+body.light-theme .header,
+body.light-theme .card,
+body.light-theme .dropdown__menu,
+body.light-theme .circular-menu,
+body.light-theme .marquee-container {
+
+  background: rgba(255,255,255,0.82) !important;
+
+  border: 1px solid rgba(15,23,42,0.08) !important;
+
+  box-shadow:
+    0 12px 35px rgba(15,23,42,0.08) !important;
+}
+
+/* Text */
+
+body.light-theme .hero-title,
+body.light-theme .logo__text,
+body.light-theme .card__title,
+body.light-theme .section-title,
+body.light-theme .timer-display,
+body.light-theme .dropdown__item,
+body.light-theme .dropdown__trigger {
+
+  color: #111827 !important;
+}
+
+body.light-theme .subtitle,
+body.light-theme .marquee,
+body.light-theme .muted {
+
+  color: #6b7280 !important;
+}
+
+/* Todo / Poll */
+
+body.light-theme .todo-input,
+body.light-theme .todo-item,
+body.light-theme .poll-option {
+
+  background:
+    rgba(255,255,255,0.72) !important;
+
+  color:
+    #111827 !important;
+
+  border:
+    1px solid rgba(15,23,42,0.06) !important;
+}
+
+/* Menu items */
+
+body.light-theme .menu-item {
+
+  background:
+    rgba(255,255,255,0.95) !important;
+}
+
+body.light-theme .menu-item i {
+
+  color:
+    #111827 !important;
+}
+/* ============================================================
+   🌞 LIGHT THEME VARIABLE OVERRIDES
+============================================================ */
+
+body.light-theme {
+
+  --bg-primary:
+    linear-gradient(
+      135deg,
+      #f8fafc,
+      #eef2f7,
+      #ffffff
+    );
+
+  --bg-secondary:
+    rgba(255,255,255,0.88);
+
+  --bg-tertiary:
+    rgba(245,247,250,0.85);
+
+  --surface:
+    rgba(255,255,255,0.72);
+
+  --text-primary:
+    #111827;
+
+  --text-secondary:
+    #374151;
+
+  --muted:
+    #6b7280;
+
+  --border-color:
+    rgba(15,23,42,0.08);
+
+  --shadow-color:
+    rgba(15,23,42,0.10);
+}
+/* ============================================================
+   🌙 TRUE DARK MODE OVERRIDE
+   ONLY changes backgrounds/cards
+============================================================ */
+
+body.dark-mode {
+
+  --bg-primary:
+    linear-gradient(
+      135deg,
+      #050505,
+      #090909,
+      #111111
+    );
+
+  --bg-secondary:
+    rgba(12, 12, 12, 0.96);
+
+  --bg-tertiary:
+    rgba(20, 20, 20, 0.88);
+
+  --surface:
+    rgba(255,255,255,0.045);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #dbe4ee;
+  --muted: #94a3b8;
+
+  --border-color:
+    rgba(255,255,255,0.08);
+
+  --shadow-color:
+    rgba(0,0,0,0.65);
+}
+
+/* ============================================================
+   BODY BACKGROUND
+============================================================ */
+
+body.dark-mode {
+  background: var(--bg-primary);
+}
+
+/* Removes blue glow background */
+
+body.dark-mode::before {
+
+  background:
+    radial-gradient(
+      circle at 25% 75%,
+      rgba(255,255,255,0.03) 0%,
+      transparent 50%
+    ),
+
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(255,255,255,0.02) 0%,
+      transparent 50%
+    );
+
+  opacity: 0.4;
+}
+
+/* ============================================================
+   DARK GLASS PANELS
+============================================================ */
+
+body.dark-mode .header,
+body.dark-mode .card,
+body.dark-mode .marquee-container,
+body.dark-mode .dropdown__menu,
+body.dark-mode .circular-menu,
+body.dark-mode .todo-item,
+body.dark-mode .poll-option,
+body.dark-mode .todo-input {
+
+  background:
+    rgba(12,12,12,0.72);
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.45);
+
+  backdrop-filter:
+    blur(18px);
+}
+
+/* ============================================================
+   CARD HOVER
+============================================================ */
+
+body.dark-mode .card:hover {
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.55);
+
+  transform:
+    translateY(-4px);
+}
+
+/* ============================================================
+   DROPDOWN BUTTONS
+============================================================ */
+
+body.dark-mode .dropdown__trigger:hover {
+
+  background:
+    rgba(255,255,255,0.05);
+}
+
+/* ============================================================
+   MENU ITEMS
+============================================================ */
+
+body.dark-mode .menu-item {
+
+  background:
+    rgba(20,20,20,0.95);
+}
+
+/* ============================================================
+   INPUTS
+============================================================ */
+
+body.dark-mode .todo-input {
+
+  background:
+    rgba(255,255,255,0.04);
+}
+/* =========================
+   FIX GMEET MENU OVERLAY
+========================= */
+
+.header{
+    position: relative;
+    z-index: 99999;
+    overflow: visible;
+}
+
+.nav{
+    overflow: visible;
+}
+
+.dropdown{
+    position: relative;
+    z-index: 99999;
+}
+
+.circular-menu{
+    position: absolute;
+    z-index: 100000;
+
+    overflow: visible;
+}
+
+/* Prevent cards from covering popup */
+
+.main,
+.card,
+.left-col,
+.right-col{
+    position: relative;
+    z-index: 1;
+}
+/* ============================================================
+   IOS STYLE THEME SWITCH
+============================================================ */
+
+.theme-switch{
+    position: relative;
+    display: inline-block;
+
+    width: 78px;
+    height: 40px;
+}
+
+/* HIDE DEFAULT CHECKBOX */
+
+.theme-switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* SLIDER */
+
+.slider{
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    cursor: pointer;
+
+    border-radius: 999px;
+
+    background: #111;
+
+    transition: 0.4s ease;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    overflow: hidden;
+}
+
+/* WHITE CIRCLE */
+
+.slider::before{
+    content: "";
+
+    position: absolute;
+
+    height: 30px;
+    width: 30px;
+
+    left: 5px;
+    top: 4px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    transition: 0.4s ease;
+
+    z-index: 3;
+}
+
+/* LIGHT MODE */
+
+.theme-switch input:checked + .slider{
+    background: linear-gradient(
+        135deg,
+        #60a5fa,
+        #2563eb
+    );
+}
+
+/* MOVE SWITCH */
+
+.theme-switch input:checked + .slider::before{
+    transform: translateX(38px);
+}
+
+/* ICONS */
+
+.icon{
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 14px;
+
+    z-index: 2;
+}
+
+.sun{
+    left: 10px;
+}
+
+.moon{
+    right: 10px;
+}
+
+/* Discord GX Style Card */
+
+.discord-card{
+    width: 250px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(88,101,242,0.22),
+        rgba(20,20,35,0.95)
+    );
+
+    border: 1px solid rgba(88,101,242,0.25);
+
+    border-radius: 20px;
+
+    padding: 24px;
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+    0 10px 40px rgba(88,101,242,0.18);
+
+    transition: 0.35s ease;
+}
+
+.discord-card:hover{
+    transform: translateY(-6px);
+
+    box-shadow:
+    0 14px 55px rgba(88,101,242,0.35);
+}
+
+.discord-top{
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+    margin-bottom:28px;
+}
+
+.discord-icon{
+    width:64px;
+    height:64px;
+
+    border-radius:20px;
+
+    background:
+    rgba(88,101,242,0.18);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:
+    1px solid rgba(88,101,242,0.3);
+}
+
+.discord-icon img{
+    width:34px;
+    height:34px;
+}
+
+.discord-top h2{
+    color:white;
+    font-size:2rem;
+    margin:0;
+}
+
+.discord-top p{
+    color:#b7c0ff;
+    margin-top:4px;
+}
+
+.discord-btn{
+    display:inline-block;
+
+    padding:14px 26px;
+
+    border-radius:16px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #5865F2,
+        #7289ff
+    );
+
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+
+    transition:0.3s ease;
+
+    box-shadow:
+    0 8px 25px rgba(88,101,242,0.4);
+}
+
+.discord-btn:hover{
+    transform:scale(1.05);
+}
+  </style>
+</head>
+<body class="light-theme">
+  
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <i class="fas fa-graduation-cap logo__icon" aria-hidden="true"></i>
+        <span class="logo__text">START</span>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <!-- Elegant Circular Dropdown for Live Classes -->
+        <div class="dropdown" id="liveClassesDropdown">
+          <a href="#" class="dropdown__trigger" id="liveClassesTrigger">
+            <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
+            G-Meet
+          </a>
+          <div class="circular-menu">
+            <!-- Physics -->
+            <a href="https://meet.google.com/qrt-hkef-gfi" class="menu-item">
+              <i class="fas fa-atom"></i>
+              <span class="menu-label">Physics</span>
+            </a>
+            <!-- Chemistry -->
+            <a href="https://meet.google.com/xnu-uwgu-gbk" class="menu-item">
+              <i class="fas fa-flask"></i>
+              <span class="menu-label">Chemistry</span>
+            </a>
+            <!-- Maths -->
+            <a href="https://meet.google.com/zmo-bxvm-jut" class="menu-item">
+              <i class="fas fa-calculator"></i>
+              <span class="menu-label">Maths</span>
+            </a>
+            <!-- Computer Science -->
+            <a href="https://meet.google.com/qbp-nreg-koj" class="menu-item">
+              <i class="fas fa-laptop-code"></i>
+              <span class="menu-label">Computer Science</span>
+            </a>
+            <!-- AI -->
+            <a href="https://meet.google.com/sur-myed-qgw" class="menu-item">
+              <i class="fas fa-robot"></i>
+              <span class="menu-label">AI</span>
+            </a>
+            <!-- Others -->
+            <a href="https://meet.google.com/jmd-abbv-wjj" class="menu-item">
+              <i class="fas fa-ellipsis-h"></i>
+              <span class="menu-label">Others</span>
+            </a>
+
+            <div class="close-menu" id="closeMenu">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Materials Dropdown -->
+        <div class="dropdown" tabindex="0">
+          <a href="#" class="dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-book" aria-hidden="true"></i>
+            Materials
+          </a>
+          <div class="dropdown__menu" role="menu">
+            <a href="https://i0k3ws.mimo.run/index.html" class="dropdown__item" role="menuitem">
+              <i class="fas fa-sticky-note"></i> Notes
+            </a>
+            <a href="https://nq7kui.mimo.run/index.html" class="dropdown__item" role="menuitem">
+              <i class="fas fa-file-alt"></i> SQP &amp; PYQ
+            </a>
+            <a href="https://osopyo.mimo.run/index.html" class="dropdown__item" role="menuitem">
+              <i class="fas fa-headphones"></i> MUBI 🎧
+            </a>
+          </div>
+        </div>
+        <label class="theme-switch">
+
+    <input type="checkbox" id="themeToggle">
+
+    <span class="slider">
+
+        <span class="icon sun">☀️</span>
+
+        <span class="icon moon">🌙</span>
+
+    </span>
+
+</label>
+        
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main" role="main">
+      <div class="marquee-container">
+        <div class="marquee"><b><strong>“If you win, you live. If you lose, you die. If you don’t fight, you can’t win!” - Eren Yeager (Attack on Titan)</strong></b></div>
+      </div>
+
+      <h1 class="hero-title">START</h1>
+      <p class="subtitle">A random website built by me for absolutely no reason :D</p>
+      <p class="subtitle">Built out of boredom. Upgraded with obsession.</p>
+
+      <div class="main-split">
+        <!-- LEFT COLUMN -->
+        <section class="left-col">
+
+          <!-- What's New -->
+          <article class="card">
+            <div class="card__header">
+              <h2 class="card__title">What’s new • May 2026</h2>
+            </div>
+            <p><strong>MUBI</strong> — Your personal focus-music companion (Materials → MUBI)</p>
+            <p><strong>NotebookLM</strong> — Instant summaries, mind-maps, quizzes &amp; revision plans</p>
+            <p><strong>Figma JamBoard</strong> — Collaborative whiteboard for doubt-clearing sessions</p>
+            <p><strong>To-Do List ✅</strong> — Keeps track of your saved activities. Can be retrieved later. Your saved list is not visible to anyone else other than you. </p>
+            <p><strong>🚀 Expanded Game Library</strong> - [DEADSHOT, BGMI, MINECRAFT, ROBLOX, SMASH KARTS, SLOWROADS]</p>
+            <p><strong>YouLearnAI</strong> - Personalised AI tutor app. Learn anything faster than rote learning textbook.</p>
+            <p><strong>🎮 Opera GX Gaming Panel Added</strong> - Launch GX Games instantly with the new neon-red gaming interface.</p>
+            <p><strong>⚡ Theme System Update</strong> - Now supports both Dark Mode & Light Mode with smooth animated switching.</p>
+            <br>
+            <div class="button-grid">
+              <a class="btn" href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-graduation-cap btn__icon"></i>
+                <span>Khan Academy</span>
+              </a>
+              <a class="btn" href="https://en.wikipedia.org/" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-book-open btn__icon"></i>
+                <span>Wikipedia</span>
+              </a>
+              <a class="btn" href="https://notebooklm.google.com/notebook/03382708-3f4f-4810-9683-f20465c3efad" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-book btn__icon"></i>
+                <span>NotebookLM</span>
+              </a>
+              <a class="btn" href="https://www.figma.com/board/Vs9eZYZmD8H3kGkSPEcXKK/Untitled" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-chalkboard btn__icon"></i>
+                <span>Figma Board</span>
+              </a>
+              <a class="btn" href="https://www.youlearn.ai/" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-chalkboard btn__icon"></i>
+                <span>YouLearnAI</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Pomodoro Timer -->
+          <article class="card">
+            <h3 class="section-title"><i class="fas fa-clock"></i> Pomodoro Timer</h3>
+            <div class="pomodoro">
+              <div id="timerDisplay" class="timer-display">25:00</div>
+              
+              <!-- Circular progress ring -->
+              <svg id="progressRing" class="progress-ring" width="220" height="220">
+                <circle cx="110" cy="110" r="98" fill="none" stroke="rgba(148,163,184,0.15)" stroke-width="14"/>
+                <circle id="progressCircle" cx="110" cy="110" r="98" fill="none" 
+                        stroke="var(--accent)" stroke-width="14" stroke-dasharray="615.75"
+                        stroke-dashoffset="615.75" stroke-linecap="round" transform="rotate(-90 110 110)"/>
+              </svg>
+
+              <div class="timer-controls">
+                <button id="startBtn" class="timer-btn"><i class="fas fa-play"></i> Start</button>
+                <button id="pauseBtn" class="timer-btn"><i class="fas fa-pause"></i> Pause</button>
+                <button id="resetBtn" class="timer-btn"><i class="fas fa-redo"></i> Reset</button>
+              </div>
+              <p class="muted" style="margin-top:12px;font-size:0.9rem;">25 min focus • 5 min break • Repeat</p>
+            </div>
+          </article>
+
+          <!-- To-Do List -->
+          <article class="card">
+            <h3 class="section-title"><i class="fas fa-list-check"></i> Today’s To-Do List</h3>
+            <input type="text" id="todoInput" class="todo-input" placeholder="Add a new task… (press Enter)">
+            <ul id="todoList" class="todo-list"></ul>
+          </article>
+
+          <!-- Copilot AI Chat -->
+          <article class="card">
+            <h3 class="section-title"><i class="fas fa-robot"></i> Copilot AI Chat</h3>
+            <p class="muted" style="margin-bottom:16px;">Instant help with Physics derivations, Maths proofs, or CS concepts.</p>
+            <div class="flex-center">
+              <a class="btn" href="https://copilot.microsoft.com/?q=I'm a Class 12 PCM+CS student. Help me understand today's topic." 
+                 target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center;">
+                <i class="fas fa-rocket btn__icon"></i>
+                <span>Open Copilot for Study</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Chat-GPT AI Chat -->
+          <article class="card">
+            <h3 class="section-title"><i class="fas fa-robot"></i> Chat-GPT AI Chat</h3>
+            <p class="muted" style="margin-bottom:16px;">Instant help with Physics derivations, Maths proofs, or CS concepts.</p>
+            <div class="flex-center">
+              <a class="btn" href="https://chatgpt.com/deep-research" 
+                 target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center;">
+                <i class="fas fa-rocket btn__icon"></i>
+                <span>Open Chat-GPT for Research</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- =========================
+     RIVALS WEBSITE EMBED
+========================= -->
+
+<div class="rivals-embed-frame">
+
+  <iframe
+    src="https://v2ab4l.mimo.run/index.html"
+    class="rivals-embed">
+  </iframe>
+
+</div>
+
+<style>
+
+/* =========================
+   EMBED FRAME
+========================= */
+
+.rivals-embed-frame{
+
+  width:100%;
+
+  max-width:1200px;
+
+  height:780px;
+
+  margin:auto;
+
+  margin-top:40px;
+
+  border-radius:28px;
+
+  overflow:hidden;
+
+  position:relative;
+
+  background:
+    rgba(255,255,255,.04);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+    0 0 40px rgba(139,92,246,.18),
+    0 0 80px rgba(255,208,0,.08);
+
+  transition:.35s ease;
+
+}
+
+/* HOVER */
+
+.rivals-embed-frame:hover{
+
+  transform:translateY(-5px);
+
+  box-shadow:
+    0 0 50px rgba(255,255,255,.18);
+
+}
+
+/* =========================
+   WEBSITE
+========================= */
+
+.rivals-embed{
+
+  width:100%;
+  height:100%;
+
+  border:none;
+
+  background:#0f0f16;
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  .rivals-embed-frame{
+
+    height:650px;
+
+    border-radius:22px;
+
+  }
+
+}
+
+</style>
+
+        </section>
+
+        <!-- RIGHT COLUMN -->
+        <aside class="right-col">
+
+          <!-- NEW: Gaming Corner – Attractive & Useful (post-exam mode) -->
+          <article class="card gaming-card">
+            <h3 class="section-title"><i class="fas fa-gamepad"></i> 🎮 Gaming Corner</h3>
+            <p style="text-align:center; font-size:1.15rem; color:var(--accent); margin-bottom:20px;">
+              <br>
+              <strong></strong>
+            </p>
+
+            <!-- Highlighted Voice Chat Lobby using the "Others" link -->
+            <div style="background:rgba(110,158,212,0.12); border:2px solid var(--accent); border-radius:16px; padding:24px; text-align:center; margin-bottom:24px; position:relative;">
+              <i class="fas fa-headset" style="font-size:2.4rem; color:var(--accent); margin-bottom:12px;"></i>
+              <p style="font-size:1.05rem; font-weight:600; color:var(--accent-light);">Live Gaming Voice Lobby</p>
+              <a href="https://meet.google.com/jmd-abbv-wjj" target="_blank" rel="noopener noreferrer" class="btn" 
+                 style="width:100%; font-size:1.15rem; padding:18px 24px; background:rgba(110,158,212,0.25); border-color:var(--accent);">
+                <i class="fas fa-headset btn__icon" style="background:transparent; color:var(--accent);"></i>
+                <span>Join Gaming Session</span>
+              </a>
+              <p class="muted" style="font-size:0.9rem; margin-top:10px;">Voice chat while playing together • Open 24×7</p>
+            </div>
+
+            <!-- Quick game suggestions (useful & attractive buttons) -->
+            <h4 style="color:var(--accent-light); margin-bottom:12px; text-align:center;">Game Choices</h4>
+            <a href="https://deadshot.io" target="_blank">
+            <button class="btn deadshot">DEADSHOT</button>
+            </a>
+            <a href="https://www.battlegroundsmobileindia.com/" target="_blank">
+            <button class="btn bgmi">BGMI</button>
+            </a>
+            <a href="https://www.minecraft.net/en-us/updates/minecraft-updates-timeline-and-evolution" target="_blank">
+            <button class="btn minecraft">Minecraft</button>
+            </a>
+            <a href="https://www.roblox.com/home" target="_blank">
+             <button class="btn roblox">Roblox</button>
+            </a>
+            <a href="https://slowroads.io" target="_blank">
+             <button class="btn slowroads">SlowRoads</button>
+            </a>
+            <a href="https://smashkarts.io" target="_blank">
+             <button class="btn smash_karts">SmashKarts</button>
+            </a>
+
+
+             <br>
+             <br>
+             <!-- OPERA GX GAMING CARD -->
+<div class="gx-card">
+
+    <div class="gx-glow"></div>
+
+    <div class="gx-header">
+        <div class="gx-icon">🎮</div>
+
+        <div class="gx-text">
+            <h2>GX Games</h2>
+            <p>Gaming Control Panel</p>
+        </div>
+    </div>
+
+    <div class="gx-line"></div>
+
+    <p class="gx-description">
+        Enter the Opera GX gaming zone and launch immersive browser games
+        with a futuristic gaming experience.
+    </p>
+
+    <a href="https://gx.games" 
+       target="_blank" 
+       class="gx-button">
+       Launch Game
+    </a>
+        <!-- Discord Mini GX Card -->
+<br>
+<br>
+
+<div class="discord-card">
+
+    <div class="discord-top">
+        <div class="discord-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
+        </div>
+
+        <div>
+            <h2>Discord</h2>
+            <p>Join The Community</p>
+        </div>
+    </div>
+
+    <a href="https://discord.gg/EhgB8Hxq"
+       target="_blank"
+       class="discord-btn">
+       Join Server
+    </a>
+
+</div>
+      
+
+            <p class="muted" style="text-align:center; font-size:0.85rem; margin-top:18px;">
+              Pick one • Jump in the lobby • Let’s game!
+            </p>
+          </article>
+
+<!-- ONLY SHOWING MODIFIED PARTS FOR CLARITY -->
+
+<!-- ================= STUDY STREAK CARD (UPDATED) ================= -->
+<article class="card">
+  <h3 class="section-title"><i class="fas fa-fire"></i> Study Streak</h3>
+  <div style="text-align:center; padding: 20px 0;">
+    <div id="streakDisplay" style="font-size: 3.6rem; font-weight: 900; font-family: 'Playfair Display', serif; color: var(--accent);">0</div>
+    <p style="color: var(--muted); margin-top: 6px; font-size: 1.05rem;">consecutive study days</p>
+    
+    <button onclick="logStreak()" class="btn" style="margin-top: 20px; width: 100%;">
+      <i class="fas fa-plus"></i> Log Today’s Session
+    </button>
+
+    <!-- NEW RESET BUTTON -->
+    <button onclick="resetStreak()" class="btn" style="margin-top: 10px; width: 100%; background: rgba(255, 99, 99, 0.15); border-color: rgba(255,99,99,0.4);">
+      <i class="fas fa-rotate-left"></i> Reset Streak
+    </button>
+  </div>
+</article>
+         
+          <!-- Verified Members -->
+          <article class="card">
+            <h3 class="section-title" style="color:var(--accent-light);"><i class="fas fa-users"></i> Verified Members</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+              <div style="background:rgba(255,255,255,0.05);padding:8px 14px;border-radius:12px;display:flex;align-items:center;gap:8px;font-weight:600;">
+                <i class="fas fa-crown" style="color:#d97706"></i> Aarif [Creator]
+              </div>
+              <div style="background:rgba(255,255,255,0.05);padding:8px 14px;border-radius:12px;display:flex;align-items:center;gap:8px;font-weight:600;">Tarun</div>
+              <div style="background:rgba(255,255,255,0.05);padding:8px 14px;border-radius:12px;display:flex;align-items:center;gap:8px;font-weight:600;">Chippu</div>
+              <div style="background:rgba(255,255,255,0.05);padding:8px 14px;border-radius:12px;display:flex;align-items:center;gap:8px;font-weight:600;">Tamim</div>
+              <div style="background:rgba(255,255,255,0.05);padding:8px 14px;border-radius:12px;display:flex;align-items:center;gap:8px;font-weight:600;">Siddarth</div>
+              <div style="background:rgba(255,255,255,0.05);padding:8px 14px;border-radius:12px;display:flex;align-items:center;gap:8px;font-weight:600;">Haaras</div>
+              <div style="background:rgba(255,255,255,0.05);padding:8px 14px;border-radius:12px;display:flex;align-items:center;gap:8px;font-weight:600;">ProFariz</div>
+            </div>
+          </article>
+          <!-- Quick Tips -->
+          <article class="card">
+            <h3 class="section-title" style="color:var(--accent-light);"><i class="fas fa-lightbulb"></i> Quick Tips</h3>
+            <ul style="color:var(--text-secondary);line-height:1.5;font-size:1rem;">
+              <li>Complete one Pomodoro before checking your phone</li>
+              <li>Use the To-Do list to break big chapters into micro-tasks(DATA WILL BE SAVED FOR YOUR LATER USE)</li>
+              <li>Log your daily progress – small wins compound</li>
+              <li>Play MUBI when you need deep focus music</li>
+            </ul>
+          </article>
+
+        </aside>
+      </div>
+    </main>
+    <!-- Chess Arena -->
+<article class="card" style="margin-top:30px;">
+  <h3 class="section-title">
+    <i class="fas fa-chess"></i> Chess Arena
+  </h3>
+
+  <div style="text-align:center; padding:40px 20px;">
+
+    <i class="fas fa-chess-board"
+       style="font-size:5rem; color:var(--accent); margin-bottom:20px;">
+    </i>
+
+    <p class="muted" style="margin-bottom:25px; font-size:1.05rem;">
+      Play real multiplayer chess with friends
+    </p>
+
+    <a
+      href="https://www.chess.com/play/online"
+      target="_blank"
+      class="btn"
+      style="justify-content:center; width:100%; max-width:320px; margin:auto;"
+    >
+      <i class="fas fa-play btn__icon"></i>
+      <span>Open Chess.com</span>
+    </a>
+
+  </div>
+</article>
+    <!-- Footer -->
+    <footer style="margin-top:40px;width:100%;text-align:center;color:var(--muted);font-size:0.9rem;padding-top:24px;border-top:1px solid var(--border-color);">
+      Made with focus • START_XII © 2026
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    // ====================== STUDY STREAK ======================
+let streakDays = 0;
+
+window.logStreak = function() {
+  streakDays++;
+  document.getElementById('streakDisplay').textContent = streakDays;
+
+  const toast = document.createElement('div');
+  toast.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(110,158,212,0.95);color:#fff;padding:12px 28px;border-radius:9999px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,0.3);';
+  toast.textContent = '✅ Session logged • Streak extended';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2800);
+};
+
+// ✅ NEW RESET FUNCTION
+window.resetStreak = function() {
+  const confirmReset = confirm("Are you sure you want to reset your study streak?");
+  
+  if (confirmReset) {
+    streakDays = 0;
+    document.getElementById('streakDisplay').textContent = streakDays;
+
+    const toast = document.createElement('div');
+    toast.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(255,99,99,0.9);color:#fff;padding:12px 28px;border-radius:9999px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,0.3);';
+    toast.textContent = '⚠️ Study streak reset';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2800);
+  }
+};
+    // ====================== CIRCULAR DROPDOWN ======================
+    document.addEventListener('DOMContentLoaded', () => {
+
+  // ====================== POMODORO TIMER ======================
+      const dropdown = document.getElementById('liveClassesDropdown');
+      const trigger = document.getElementById('liveClassesTrigger');
+      const closeBtn = document.getElementById('closeMenu');
+
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        dropdown.classList.toggle('active');
+      });
+
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.remove('active');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
+      });
+
+      // ====================== POMODORO TIMER ======================
+      let timerInterval = null;
+      let timeLeft = 25 * 60;
+      let isRunning = false;
+      const display = document.getElementById('timerDisplay');
+      const circle = document.getElementById('progressCircle');
+      const circumference = 2 * Math.PI * 98;
+
+      function updateDisplay() {
+        const min = Math.floor(timeLeft / 60);
+        const sec = timeLeft % 60;
+        display.textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
+        const progress = (timeLeft / (25 * 60)) * circumference;
+        circle.style.strokeDashoffset = circumference - progress;
+      }
+
+      function startTimer() {
+        if (isRunning) return;
+        isRunning = true;
+        timerInterval = setInterval(() => {
+          if (timeLeft > 0) {
+            timeLeft--;
+            updateDisplay();
+          } else {
+            clearInterval(timerInterval);
+            isRunning = false;
+            alert("🎉 Pomodoro complete! Take a short break.");
+            timeLeft = 5 * 60;
+            updateDisplay();
+          }
+        }, 1000);
+      }
+
+      function pauseTimer() {
+        clearInterval(timerInterval);
+        isRunning = false;
+      }
+
+      function resetTimer() {
+        clearInterval(timerInterval);
+        isRunning = false;
+        timeLeft = 25 * 60;
+        updateDisplay();
+      }
+
+      document.getElementById('startBtn').addEventListener('click', startTimer);
+      document.getElementById('pauseBtn').addEventListener('click', pauseTimer);
+      document.getElementById('resetBtn').addEventListener('click', resetTimer);
+      updateDisplay();
+
+      // ====================== TO-DO LIST ======================
+      const todoInput = document.getElementById('todoInput');
+      const todoList = document.getElementById('todoList');
+
+      function loadTodos() {
+        const saved = JSON.parse(localStorage.getItem('startxii_todos') || '[]');
+        saved.forEach(task => addTodoElement(task.text, task.done));
+      }
+
+      function saveTodos() {
+        const items = [];
+        todoList.querySelectorAll('li').forEach(li => {
+          items.push({
+            text: li.querySelector('span').textContent,
+            done: li.classList.contains('done')
+          });
+        });
+        localStorage.setItem('startxii_todos', JSON.stringify(items));
+      }
+
+      function addTodoElement(text, done = false) {
+        const li = document.createElement('li');
+        li.className = `todo-item ${done ? 'done' : ''}`;
+        li.innerHTML = `
+          <input type="checkbox" ${done ? 'checked' : ''} style="width:18px;height:18px;">
+          <span style="flex:1;">${text}</span>
+          <i class="fas fa-trash" style="cursor:pointer;color:#94a3b8;"></i>
+        `;
+        
+        li.querySelector('input').addEventListener('change', () => {
+          li.classList.toggle('done');
+          saveTodos();
+        });
+        
+        li.querySelector('.fa-trash').addEventListener('click', () => {
+          li.remove();
+          saveTodos();
+        });
+        
+        todoList.appendChild(li);
+      }
+
+      todoInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && todoInput.value.trim()) {
+          addTodoElement(todoInput.value.trim());
+          saveTodos();
+          todoInput.value = '';
+        }
+      });
+
+      loadTodos();
+
+      // ====================== STUDY STREAK ======================
+      // ====================== GAMING CORNER INTERACTION ======================
+      window.pickGame = function(btn) {
+        // Highlight the chosen game
+        btn.style.background = 'rgba(110,158,212,0.3)';
+        btn.style.borderColor = 'var(--accent)';
+        btn.style.transform = 'scale(1.05)';
+        
+        setTimeout(() => {
+          alert(`🎉 Great choice! "${btn.textContent.trim()}" it is!\n\nHead to the Gaming Voice Lobby and let's play!`);
+          // Reset style after alert
+          btn.style.background = '';
+          btn.style.borderColor = '';
+          btn.style.transform = '';
+        }, 180);
+      };
+
+      // ====================== QUICK POLL ======================
+      let hasVoted = false;
+      const pollOptions = document.getElementById('pollOptions');
+      const pollResults = document.getElementById('pollResults');
+
+      pollOptions.querySelectorAll('.poll-option').forEach(option => {
+        option.addEventListener('click', () => {
+          if (hasVoted) return;
+          hasVoted = true;
+          
+          const votes = { Physics: 42, Chemistry: 18, Mathematics: 27, "Computer Science": 13 };
+          const total = Object.values(votes).reduce((a,b)=>a+b,0);
+          
+          pollOptions.style.display = 'none';
+          pollResults.style.display = 'block';
+          
+          document.getElementById('pollPhysPct').textContent = Math.round(votes.Physics/total*100)+'%';
+          document.getElementById('pollChemPct').textContent = Math.round(votes.Chemistry/total*100)+'%';
+          document.getElementById('pollMathPct').textContent = Math.round(votes.Mathematics/total*100)+'%';
+          document.getElementById('pollCSPct').textContent = Math.round(votes["Computer Science"]/total*100)+'%';
+          
+          document.getElementById('pollPhysBar').style.width = (votes.Physics/total*100)+'%';
+          document.getElementById('pollChemBar').style.width = (votes.Chemistry/total*100)+'%';
+          document.getElementById('pollMathBar').style.width = (votes.Mathematics/total*100)+'%';
+          document.getElementById('pollCSBar').style.width = (votes["Computer Science"]/total*100)+'%';
+        });
+      });
+
+      window.resetPoll = function() {
+        hasVoted = false;
+        pollResults.style.display = 'none';
+        pollOptions.style.display = 'block';
+      };
+    });
+
+    /* =========================
+   THEME TOGGLE
+========================= */
+
+const themeToggle = document.getElementById("themeToggle");
+
+/* Load Saved Theme */
+
+if(localStorage.getItem("theme") === "light"){
+
+    document.body.classList.add("light-theme");
+
+    themeToggle.innerHTML = "🌙 Dark Mode";
+
+}
+
+else{
+
+    themeToggle.innerHTML = "☀️ Light Mode";
+
+}
+
+/* Toggle Theme */
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("light-theme");
+
+    /* LIGHT MODE ACTIVE */
+
+    if(document.body.classList.contains("light-theme")){
+
+        localStorage.setItem("theme", "light");
+
+        themeToggle.innerHTML = "🌙 Dark Mode";
+    }
+
+    /* DARK MODE ACTIVE */
+
+    else{
+
+        localStorage.setItem("theme", "dark");
+
+        themeToggle.innerHTML = "☀️ Light Mode";
+    }
+});
+
+
+  </script>
+</body>
+</html>
